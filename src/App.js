@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-function App() {
+import PageWrapper from "./components/PageWrapper";
+import Welcome from "./components/WelcomePage";
+import OrderList from "./components/OrderList";
+import Payment from "./components/Payment";
+import Basket from "./components/Basket";
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PageWrapper>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Welcome} />
+            <Route exact path="/order" component={OrderList} />
+            <Route exact path="/basket" component={Basket} />
+            <Route exact path="/payment" component={Payment} />
+          </Switch>
+        </Router>
+      </PageWrapper>
     </div>
   );
-}
+};
 
 export default App;
